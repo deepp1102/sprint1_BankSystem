@@ -22,7 +22,7 @@ A frontend banking system built using HTML, CSS, and JavaScript.
 - JavaScript
 
 ## 🌐 Live Demo
-(Add GitHub Pages link here)
+https://deepp1102.github.io/sprint1_BankSystem/
 
 ## 📌 Future Improvements
 - Backend Integration
