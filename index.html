@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurum Bank — Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="center">
+
+<!-- floating particles -->
+<div style="position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;">
+  <div class="particle" style="left:10%;top:20%;width:2px;height:2px;background:var(--gold);border-radius:50%;opacity:.4;position:absolute;animation:float1 8s ease-in-out infinite;"></div>
+  <div class="particle" style="left:80%;top:60%;width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:.25;position:absolute;animation:float1 11s ease-in-out infinite 2s;"></div>
+  <div class="particle" style="left:50%;top:80%;width:2px;height:2px;background:#60a5fa;border-radius:50%;opacity:.3;position:absolute;animation:float1 9s ease-in-out infinite 1s;"></div>
+  <div class="particle" style="left:20%;top:70%;width:4px;height:4px;background:var(--gold);border-radius:50%;opacity:.15;position:absolute;animation:float1 13s ease-in-out infinite 3s;"></div>
+</div>
+<style>
+@keyframes float1 {
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-30px) scale(1.3);}
+}
+</style>
+
+<div class="card login-card" style="position:relative;z-index:1;">
+  <div class="login-logo">🏦</div>
+  <h2>Aurum Bank</h2>
+  <p class="login-subtitle">Secure Private Banking</p>
+
+  <div class="input-group">
+    <label>Username</label>
+    <input type="text" id="username" placeholder="Enter username" autocomplete="off">
+  </div>
+
+  <div class="input-group">
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Enter password">
+  </div>
+
+  <button class="btn btn-primary ripple-wrap" onclick="login(this)">
+    <span>Sign In</span>
+    <span>→</span>
+  </button>
+
+  <p id="error"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

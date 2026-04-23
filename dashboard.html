@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurum Bank — Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">🏦</div>
+    <div>
+      <div class="brand-name">Aurum</div>
+      <div class="brand-tag">Private Bank</div>
+    </div>
+  </div>
+
+  <div class="nav-label">Navigation</div>
+  <button class="nav-btn active" id="nav-home" onclick="showSection('home', this)">
+    <span class="nav-icon">⊞</span> Dashboard
+  </button>
+  <button class="nav-btn" id="nav-deposit" onclick="showSection('deposit', this)">
+    <span class="nav-icon">↓</span> Deposit
+  </button>
+  <button class="nav-btn" id="nav-withdraw" onclick="showSection('withdraw', this)">
+    <span class="nav-icon">↑</span> Withdraw
+  </button>
+  <button class="nav-btn" id="nav-transfer" onclick="showSection('transfer', this)">
+    <span class="nav-icon">⇄</span> Transfer
+  </button>
+  <button class="nav-btn" id="nav-history" onclick="showSection('history', this)">
+    <span class="nav-icon">☰</span> History
+  </button>
+
+  <div class="sidebar-spacer"></div>
+
+  <div class="sidebar-user" onclick="window.location.href='profile.html'">
+    <div class="user-avatar">A</div>
+    <div>
+      <div class="user-info-name">Deep</div>
+      <div class="user-info-role">Premium Account</div>
+    </div>
+    <span style="margin-left:auto;color:var(--text-muted);font-size:12px;">›</span>
+  </div>
+
+  <button class="btn btn-danger" onclick="logout()" style="width:100%;font-size:13px;">
+    ⏻ &nbsp;Sign Out
+  </button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HOME -->
+  <div id="home" class="section active">
+    <div class="page-header">
+      <h1>Good day, Deep ✦</h1>
+      <p>Here's what's happening with your account today.</p>
+    </div>
+
+    <div class="balance-hero">
+      <div class="balance-label">Total Balance</div>
+      <div id="balance">₹0</div>
+      <div class="balance-sub">Available for transactions</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">↓</div>
+        <div class="stat-value" id="stat-deposited">₹0</div>
+        <div class="stat-label">Total Deposited</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">↑</div>
+        <div class="stat-value" id="stat-withdrawn">₹0</div>
+        <div class="stat-label">Total Withdrawn</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⇄</div>
+        <div class="stat-value" id="stat-txcount">0</div>
+        <div class="stat-label">Transactions</div>
+      </div>
+    </div>
+
+    <div class="section-title">Quick Actions</div>
+    <div class="quick-actions">
+      <button class="quick-btn" onclick="showSection('deposit', document.getElementById('nav-deposit'))">
+        <div class="q-icon">↓</div>
+        Deposit
+      </button>
+      <button class="quick-btn" onclick="showSection('withdraw', document.getElementById('nav-withdraw'))">
+        <div class="q-icon">↑</div>
+        Withdraw
+      </button>
+      <button class="quick-btn" onclick="showSection('transfer', document.getElementById('nav-transfer'))">
+        <div class="q-icon">⇄</div>
+        Transfer
+      </button>
+      <button class="quick-btn" onclick="showSection('history', document.getElementById('nav-history'))">
+        <div class="q-icon">☰</div>
+        History
+      </button>
+    </div>
+
+    <div class="recent-section">
+      <div class="section-title">Recent Transactions</div>
+      <ul id="recentList"></ul>
+    </div>
+  </div>
+
+  <!-- DEPOSIT -->
+  <div id="deposit" class="section">
+    <div class="page-header">
+      <h1>Deposit Funds</h1>
+      <p>Add money to your account instantly.</p>
+    </div>
+    <div class="action-card">
+      <h2>How much?</h2>
+      <p class="sub">Enter the amount you'd like to deposit.</p>
+      <div class="amount-display">
+        <span class="currency-symbol">₹</span>
+        <input type="number" id="depositAmount" placeholder="0">
+      </div>
+      <button class="btn btn-primary" onclick="deposit()" style="margin-top:4px;">
+        ↓ &nbsp; Confirm Deposit
+      </button>
+    </div>
+  </div>
+
+  <!-- WITHDRAW -->
+  <div id="withdraw" class="section">
+    <div class="page-header">
+      <h1>Withdraw Funds</h1>
+      <p>Transfer funds out of your account.</p>
+    </div>
+    <div class="action-card">
+      <h2>How much?</h2>
+      <p class="sub">Enter the amount you'd like to withdraw.</p>
+      <div class="amount-display">
+        <span class="currency-symbol">₹</span>
+        <input type="number" id="withdrawAmount" placeholder="0">
+      </div>
+      <button class="btn btn-primary" onclick="withdraw()" style="margin-top:4px;">
+        ↑ &nbsp; Confirm Withdrawal
+      </button>
+    </div>
+  </div>
+
+  <!-- TRANSFER -->
+  <div id="transfer" class="section">
+    <div class="page-header">
+      <h1>Transfer Funds</h1>
+      <p>Send money to another account.</p>
+    </div>
+    <div class="action-card">
+      <h2>Send Money</h2>
+      <p class="sub">Fill in the recipient and amount below.</p>
+      <div class="input-group" style="margin-bottom:16px;">
+        <label>Recipient</label>
+        <input type="text" id="receiver" placeholder="Enter name or account number">
+      </div>
+      <div class="amount-display">
+        <span class="currency-symbol">₹</span>
+        <input type="number" id="transferAmount" placeholder="0">
+      </div>
+      <button class="btn btn-primary" onclick="transfer()" style="margin-top:4px;">
+        ⇄ &nbsp; Confirm Transfer
+      </button>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div id="history" class="section">
+    <div class="page-header">
+      <h1>Transaction History</h1>
+      <p>A complete record of your activity.</p>
+    </div>
+    <ul id="historyList"></ul>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
