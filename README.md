@@ -13,7 +13,7 @@ A frontend banking system built using HTML, CSS, and JavaScript.
 - Responsive UI with animations
 
 ## 🔐 Login Credentials
-- Username: admin
+- Username: Deep
 - Password: 1234
 
 ## 🛠️ Tech Stack
